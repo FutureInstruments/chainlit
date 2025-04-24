@@ -166,6 +166,13 @@ class Element:
             "mime": mime_type,
         }
 
+        print("DEBUG PARAMS --")
+        print(common_params)
+        print("DEBUG PARAMS --")
+        
+        if type == "pdf":
+            return Pdf(**common_params)  # type: ignore[arg-type]
+                
         if type == "image":
             return Image(size="medium", **common_params)  # type: ignore[arg-type]
 
@@ -189,6 +196,9 @@ class Element:
 
     @classmethod
     def infer_type_from_mime(cls, mime_type: str):
+        print("DEBUG --")
+        print(mime_type)
+        print("DEBUG --")
         """Infer the element type from a mime type. Useful to know which element to instantiate from a file upload."""
         if "image" in mime_type:
             return "image"
@@ -236,7 +246,9 @@ class Element:
 
     async def send(self, for_id: str, persist=True):
         self.for_id = for_id
-
+        print("SEND DEBUG ---")
+        print(self)
+        print("SEND DEBUG ---")
         if not self.mime:
             if self.type in mime_types:
                 self.mime = mime_types[self.type]

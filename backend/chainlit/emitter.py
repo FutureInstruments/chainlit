@@ -290,6 +290,9 @@ class ChainlitEmitter(BaseChainlitEmitter):
                 for file in files
             ]
 
+            print("DEBUG ------")
+            print(elements)
+            print("DEBUG ------")
             message.elements = elements
 
             async def send_elements():
