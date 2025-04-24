@@ -199,8 +199,8 @@ class ChainlitDataLayer(BaseDataLayer):
             props = EXCLUDED.props
         """
 
-        if element.mime == 'application/pdf':
-            finaltype = element.mime.split('/')[1]
+        if element.mime == "application/pdf":
+            finaltype = element.mime.split("/")[1]
         else:
             finaltype = element.type
         
