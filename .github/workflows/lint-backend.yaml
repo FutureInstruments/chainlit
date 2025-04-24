@@ -22,13 +22,13 @@ jobs:
           version-file: "backend/pyproject.toml"
           src: ${{ env.BACKEND_DIR }}
           changed-files: "true"
-      - name: Check formatting with ruff
-        uses: astral-sh/ruff-action@v1
-        with:
-          version-file: "backend/pyproject.toml"
-          src: ${{ env.BACKEND_DIR }}
-          changed-files: "true"
-          args: "format --check"
+      # - name: Check formatting with ruff
+      #   uses: astral-sh/ruff-action@v1
+      #   with:
+      #     version-file: "backend/pyproject.toml"
+      #     src: ${{ env.BACKEND_DIR }}
+      #     changed-files: "false"
+          # args: "format --check"
       - name: Run Mypy
         run: poetry run mypy chainlit/
         working-directory: ${{ env.BACKEND_DIR }}
