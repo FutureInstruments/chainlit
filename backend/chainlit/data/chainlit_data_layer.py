@@ -198,6 +198,12 @@ class ChainlitDataLayer(BaseDataLayer):
         ON CONFLICT (id) DO UPDATE SET
             props = EXCLUDED.props
         """
+
+        if element.mime == 'application/pdf':
+            finaltype = element.mime.split('/')[1]
+        else:
+            finaltype = element.type
+        
         params = {
             "id": element.id,
             "thread_id": element.thread_id,
@@ -207,7 +213,7 @@ class ChainlitDataLayer(BaseDataLayer):
                     "size": element.size,
                     "language": element.language,
                     "display": element.display,
-                    "type": element.type,
+                    "type": finaltype, # element.type,
                     "page": getattr(element, "page", None),
                 }
             ),
